@@ -4,7 +4,6 @@
 
 > 🚜 *"Technology should not stop at cities."*
 
----
 
 ## 📌 Features
 
@@ -18,7 +17,6 @@
   * Confidence level
   * Treatment suggestions
 
----
 
 ### ☁️ Weather Forecast & Alerts
 
@@ -26,7 +24,6 @@
 * Rain predictions 🌧️
 * Smart farming alerts (e.g., irrigation suggestions)
 
----
 
 ### 💰 Market Price Tracking
 
@@ -40,7 +37,6 @@
   * Chili 🌶️
 * Shows price trends 📈📉
 
----
 
 ### 💧 Water Management System
 
@@ -48,7 +44,6 @@
 * Smart irrigation reminders
 * Crop-based watering schedules
 
----
 
 ### 🎙️ Tamil Voice Assistant
 
@@ -60,7 +55,6 @@
   * “தக்காளி விலை என்ன?”
   * “நீர் பாய்ச்ச வேண்டுமா?”
 
----
 
 ## 🖥️ Tech Stack
 
@@ -69,11 +63,9 @@
 * **AI Integration:** (Pluggable - future scope)
 * **Voice Recognition:** Web Speech API (planned/implemented)
 
----
 
 ## 📂 Project Structure
 
-```
 FarmIntel-AI/
 │── index.html
 │── style.css
@@ -82,7 +74,6 @@ FarmIntel-AI/
 │     └── logo.jpg
 ```
 
----
 
 ## 🚀 Getting Started
 
@@ -102,7 +93,6 @@ cd FarmIntel-AI
 
 * Open `index.html` in your browser 🌐
 
----
 
 ## 🌍 Vision
 
@@ -112,7 +102,6 @@ FarmIntel AI aims to:
 * Provide AI tools in native languages 🇱🇰
 * Improve productivity using smart insights 📊
 
----
 
 ## 🔮 Future Improvements
 
@@ -121,8 +110,6 @@ FarmIntel AI aims to:
 * Mobile app version 📱
 * Offline support for rural areas
 * IoT sensor integration for soil data
-
----
 
 ## 🤝 Contributing
 
@@ -133,18 +120,10 @@ Contributions are welcome!
 3. Make your changes
 4. Submit a pull request
 
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
-
----
 
 ## 👨‍💻 Author
 
-Developed by **PRATHEEP** 🚀
+Developed by Sivaraja Pratheep 🚀
 
----
 
-⭐ *If you like this project, give it a star on GitHub!*
+⭐ If you like this project, give it a star on GitHub!
