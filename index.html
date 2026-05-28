@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FarmIntel AI</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel = "stylesheet" href = "style.css">
+<link rel="icon" href="/image/logo.jpg" type="image/jpeg">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo"><img src="/image/logo.jpg" alt="FarmIntel AI"></span>
+  <div class="nav-links">
+    <a href="#disease">நோய் கண்டறிதல்</a>
+    <a href="#weather">வானிலை</a>
+    <a href="#market">சந்தை விலை</a>
+    <a href="#water">நீர் நிர்வாகம்</a>
+    <a href="#voice">குரல் உதவியாளர்</a>
+  </div>
+</nav>
+
+<!-- SPLASH -->
+<section class="splash" id="top">
+  <div class="logo-wrap">
+    <div class="logo-circle">🏝️</div>
+    <div class="logo-title">FarmIntel AI</div>
+    <div class="logo-sub">உங்கள் AI விவசாய உதவியாளர்</div>
+    <div class="tagline">Smart Farming · Tamil Voice · AI-Powered</div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dashboard" style="padding-top:100px;">
+  <div class="section-tag">📱 Home Dashboard</div>
+  <h2 class="section-title">உங்கள் விவசாய கட்டுப்பாட்டு மையம்</h2>
+  <div class="section-divider"></div>
+  <div class="dashboard-wrap">
+    <div class="dash-header">
+      <div class="dash-greeting">வணக்கம்,🙏</div>
+      <div class="weather-pill">☁️ 31°C · யாழ்ப்பாணம் · ஈரப்பதம் 45%</div>
+    </div>
+    <div class="module-grid">
+      <div class="module-card mc-disease" onclick="document.getElementById('disease').scrollIntoView({behavior:'smooth'})">
+        <div class="mc-icon">🔬</div>
+        <div class="mc-label">நோய் கண்டறிதல்</div>
+        <div class="mc-desc">AI crop disease scan</div>
+      </div>
+      <div class="module-card mc-weather" onclick="document.getElementById('weather').scrollIntoView({behavior:'smooth'})">
+        <div class="mc-icon">⛅</div>
+        <div class="mc-label">வானிலை</div>
+        <div class="mc-desc">Rain & climate alerts</div>
+      </div>
+      <div class="module-card mc-market" onclick="document.getElementById('market').scrollIntoView({behavior:'smooth'})">
+        <div class="mc-icon">💰</div>
+        <div class="mc-label">சந்தை விலை</div>
+        <div class="mc-desc">Daily price updates</div>
+      </div>
+      <div class="module-card mc-water" onclick="document.getElementById('water').scrollIntoView({behavior:'smooth'})">
+        <div class="mc-icon">💧</div>
+        <div class="mc-label">நீர் நினைவூட்டல்</div>
+        <div class="mc-desc">Irrigation management</div>
+      </div>
+      <div class="module-card mc-voice" onclick="document.getElementById('voice').scrollIntoView({behavior:'smooth'})">
+        <div class="mc-icon">🎙️</div>
+        <div class="mc-label">குரல் உதவியாளர்</div>
+        <div class="mc-desc">Tamil voice assistant</div>
+      </div>
+      <div class="module-card mc-profile">
+        <div class="mc-icon">👨‍🌾</div>
+        <div class="mc-label">என் சுயவிவரம்</div>
+        <div class="mc-desc">Farmer profile</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISEASE DETECTION -->
+<section id="disease">
+  <div class="section-tag">🌿 AI Module</div>
+  <h2 class="section-title">நோய் கண்டறிதல்</h2>
+  <div class="section-divider"></div>
+  <p class="section-desc">உங்கள் பயிரின் இலை புகைப்படம் எடுக்கவும் — AI உடனடியாக நோயை கண்டறியும்</p>
+  <div class="detect-section">
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" accept="image/*" onchange="previewImage(event)" id="imgInput">
+      <img id="previewImg" class="preview-img" />
+      <div class="upload-icon" id="uploadIcon">📸</div>
+      <div class="upload-label" id="uploadLabel">இலை புகைப்படம் Upload செய்யவும்</div>
+      <div class="upload-or">— அல்லது —</div>
+      <div class="upload-label">Camera திறக்க click செய்யவும்</div>
+    </div>
+    <button class="detect-btn" onclick="detectDisease()">
+      <span id="detectBtnText">🔬 AI நோய் கண்டறி</span>
+      <span class="loading-spinner" id="detectSpinner"></span>
+    </button>
+    <div class="result-box" id="resultBox">
+      <div class="result-disease" id="resultDisease">🔴 Tomato Early Blight</div>
+      <div style="color:rgba(255,255,255,0.5); font-size:0.8rem; margin-bottom:4px;">நம்பிக்கை நிலை (Confidence)</div>
+      <div class="confidence-bar-wrap">
+        <div class="confidence-bar" id="confBar"></div>
+      </div>
+      <div style="font-size:0.85rem; color:rgba(255,255,255,0.45);" id="confText">94% — மிக அதிக நம்பகத்தன்மை</div>
+      <div class="treatment-tag" id="treatText">💊 Copper fungicide தெளிக்கவும்</div>
+    </div>
+  </div>
+</section>
+
+<!-- WEATHER -->
+<section id="weather">
+  <div class="section-tag">☁️ Weather Module</div>
+  <h2 class="section-title">வானிலை & எச்சரிக்கைகள்</h2>
+  <div class="section-divider"></div>
+  <div class="weather-section">
+    <div class="weather-main">
+      <div class="temp-display">28°</div>
+      <div class="weather-info">
+        <div class="weather-loc">📍 யாழ் மாவட்டம், இலங்கை</div>
+        <div class="weather-status">☁️ பகுதி மேகமூட்டம்</div>
+        <div class="weather-alert">⚠️ நாளை மழை எதிர்பார்க்கப்படுகிறது — இன்று நீர்பாய்ச்ச வேண்டாம்</div>
+      </div>
+    </div>
+    <div class="weather-grid">
+      <div class="w-card">
+        <div class="w-card-icon">💧</div>
+        <div class="w-card-val">72%</div>
+        <div class="w-card-lbl">ஈரப்பதம்</div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-icon">🌬️</div>
+        <div class="w-card-val">14 km/h</div>
+        <div class="w-card-lbl">காற்று வேகம்</div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-icon">🌧️</div>
+        <div class="w-card-val">80%</div>
+        <div class="w-card-lbl">மழை சாத்தியம்</div>
+      </div>
+      <div class="w-card">
+        <div class="w-card-icon">☀️</div>
+        <div class="w-card-val">33°</div>
+        <div class="w-card-lbl">அதிகபட்சம்</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET PRICES -->
+<section id="market">
+  <div class="section-tag">💰 Market Module</div>
+  <h2 class="section-title">இன்றைய சந்தை விலை</h2>
+  <div class="section-divider"></div>
+  <div class="market-section">
+    <p style="font-family:'Noto Sans Tamil',sans-serif; color:rgba(255,255,255,0.5); font-size:0.85rem; margin-bottom:24px;">
+      📅 இன்று புதுப்பிக்கப்பட்டது · யாழ் மசந்தை
+    </p>
+    <div class="price-list">
+      <div class="price-row">
+        <div class="price-crop"><span class="price-icon">🍅</span>தக்காளி</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="price-val">₹250/கிலோ</span>
+          <span class="trend trend-up">↑ +12%</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-crop"><span class="price-icon">🧅</span>வெங்காயம்</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="price-val">₹180/கிலோ</span>
+          <span class="trend trend-down">↓ -5%</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-crop"><span class="price-icon">🌾</span>அரிசி</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="price-val">₹130/கிலோ</span>
+          <span class="trend trend-up">↑ +3%</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-crop"><span class="price-icon">🥔</span>உருளைக்கிழங்கு</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="price-val">₹95/கிலோ</span>
+          <span class="trend trend-down">↓ -8%</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-crop"><span class="price-icon">🌶️</span>மிளகாய்</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="price-val">₹320/கிலோ</span>
+          <span class="trend trend-up">↑ +18%</span>
+        </div>
+      </div>
+      <div class="price-row">
+        <div class="price-crop"><span class="price-icon">🥜</span>நிலக்கடலை</div>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span class="price-val">₹85/கிலோ</span>
+          <span class="trend trend-up">↑ +2%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WATER REMINDER -->
+<section id="water">
+  <div class="section-tag">💧 Irrigation Module</div>
+  <h2 class="section-title">நீர் நிர்வாகம்</h2>
+  <div class="section-divider"></div>
+  <div class="water-section">
+    <div class="water-grid">
+      <div class="water-card">
+        <div style="font-weight:600; font-family:'Noto Sans Tamil',sans-serif; margin-bottom:8px;">மண் ஈரப்பதம்</div>
+        <div class="moisture-ring-wrap">
+          <div class="moisture-ring">
+            <div class="moisture-val">68%</div>
+          </div>
+        </div>
+        <div style="text-align:center; font-size:0.8rem; color:rgba(255,255,255,0.45); font-family:'Noto Sans Tamil',sans-serif;">
+          ✅ சரியான நிலையில் உள்ளது
+        </div>
+      </div>
+      <div class="water-card">
+        <div style="font-weight:600; font-family:'Noto Sans Tamil',sans-serif; margin-bottom:16px;">நீர்ப்பாசன அட்டவணை</div>
+        <div class="reminder-list">
+          <div class="reminder-item">
+            <div class="reminder-dot dot-now"></div>
+            தக்காளி — இன்று காலை 6:00
+          </div>
+          <div class="reminder-item">
+            <div class="reminder-dot dot-soon"></div>
+            வெங்காயம் — நாளை காலை 5:30
+          </div>
+          <div class="reminder-item">
+            <div class="reminder-dot dot-ok"></div>
+            அரிசி — 3 நாட்களில்
+          </div>
+          <div class="reminder-item">
+            <div class="reminder-dot dot-ok"></div>
+            மிளகாய் — 5 நாட்களில்
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE ASSISTANT -->
+<section id="voice">
+  <div class="section-tag">🎙️ Voice Module</div>
+  <h2 class="section-title">தமிழ் குரல் உதவியாளர்</h2>
+  <div class="section-divider"></div>
+  <div class="voice-section">
+    <p class="section-desc" style="margin-bottom:0;">மைக்கை அழுத்தி தமிழில் கேளுங்கள்!</p>
+    <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">🎙️</button>
+    <div id="voiceStatus" style="color:rgba(255,255,255,0.4); font-family:'Noto Sans Tamil',sans-serif; font-size:0.9rem;">
+      மைக்கை அழுத்தவும்
+    </div>
+    <div style="margin-top:20px;">
+      <div style="font-size:0.8rem; color:rgba(255,255,255,0.35); font-family:'Noto Sans Tamil',sans-serif; margin-bottom:10px;">இந்த கேள்விகளை கேளுங்கள்:</div>
+      <div>
+        <span class="voice-cmd-chip" onclick="simulateVoice('rain')">இன்று மழை வருமா?</span>
+        <span class="voice-cmd-chip" onclick="simulateVoice('tomato')">தக்காளி விலை என்ன?</span>
+        <span class="voice-cmd-chip" onclick="simulateVoice('water')">நீர் பாய்ச்ச வேண்டுமா?</span>
+        <span class="voice-cmd-chip" onclick="simulateVoice('disease')">என் பயிர் நோய் என்ன?</span>
+      </div>
+    </div>
+    <div class="voice-response" id="voiceResponse">
+      <div style="font-size:0.75rem; color:rgba(255,255,255,0.35); margin-bottom:6px;">🤖 AI பதில்:</div>
+      <div id="voiceResponseText" style="font-family:'Noto Sans Tamil',sans-serif; line-height:1.6;"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>🌱 <strong>FarmIntel AI</strong> — Technology should not stop at cities.</div>
+  <div style="margin-top:8px;">AI-powered farming assistance directly to local farmers in their own language.</div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
